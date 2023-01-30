@@ -1,0 +1,35 @@
+---
+- name: installing java tree git
+  hosts: all
+  tasks:
+    - name: updating
+      apt:
+        update_cache: true
+        upgrade: yes
+
+          # - name: installing java
+          #apt:
+          # name: default-jdk
+          #state: latest
+          #become: true
+
+       #different looping method of multiple packages installation
+       #  - name: installing java git tree
+        # apt:
+        # name:
+        # - default-jdk
+        # - git
+        # - tree
+        # state: latest   
+        #  become: true
+
+    - name: giving multiple packages configuration in standard format
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+          - default-jdk
+          - tree
+          - git
+      become: true      
+

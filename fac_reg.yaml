@@ -1,0 +1,31 @@
+---
+- name: facts_reg
+  hosts: myslaves
+  tasks:
+    # - name: copying
+      # shell: ls
+        # register: xyz_out
+
+        # - debug:
+      # var: xyz_out
+
+    - name: installin_an
+      apt:
+        name: tree
+        state: latest
+      become: true
+      when: ansible_facts[ 'os_family' ] == "debian"
+
+    - name: tes
+      yum:
+        name: tree
+        state: latest
+      become: true
+      when: ansible_facts[ 'os_family' ] == "Redhat"
+
+        #   - name: copying files
+     # copy:
+        # src: 1stplaybook.yaml
+          # dest: /root
+          #  loop: "{{ xyz_out.stdout_lines }}"
+        #  when: xyz_out.stdout == "1stplaybook.yaml"

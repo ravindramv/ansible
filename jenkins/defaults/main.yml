@@ -1,0 +1,12 @@
+---
+# defaults file for jenkins
+jenkins_url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+jenkins_deb_repo: deb https://pkg.jenkins.io/debian-stable binary/
+jenkins_package: jenkins
+seven_lines: <role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+ <role rolename="manager-jmx"/>
+ <role rolename="manager-status"/>
+<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+ <user username="deployer" password="deployer" roles="manager-script"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>

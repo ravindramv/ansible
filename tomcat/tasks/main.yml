@@ -1,0 +1,45 @@
+---
+# tasks file for tomcat
+- name: updating
+  apt:
+    update_cache: yes
+- name: installing java
+  apt:
+    name: "{{ java_package }}"
+    state: present
+
+- name: downloadong tomcat server packages
+  get_url:
+    url: "{{ tomcat_url }}"
+    dest: "{{ destination_folder }}"
+
+- name: extracting tomcat packages
+  unarchive:
+    src: "{{ item }}"
+    dest: "{{ destination_folder }}"
+    remote_src: yes
+  with_items:
+    - "{{ destination_folder_path }}"
+
+- name: commenting on hostmanager 
+  template:
+    src: template/template/context.xml.j2
+    dest: "{{ hostmanager_path }}"
+
+- name: commenting manager
+  template:
+    src: template2/template2/context.xml.j2
+    dest: "{{ manager_path }}"
+
+- name: adding seven lines for config-tomcatusersxml
+  template:
+    src: template3/template3/tomcat-users.xml.j2
+    dest: "{{ adminrole_path }}"
+      
+- name: changing port number using template
+  template:
+    src: template/server.xml.j2
+    dest: "{{ tomcat_server_port_path }}"
+  notify: restart tomcat
+
+

@@ -1,0 +1,18 @@
+---
+# defaults file for tomcat
+java_package: default-jdk
+tomcat_url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.tar.gz
+destination_folder: /opt/
+destination_folder_path: /opt/apache-tomcat-10.0.27.tar.gz
+tom_port_number: "8080"
+tomcat_server_port_path: /opt/apache-tomcat-10.0.27/conf/server.xml
+seven_lines: <role rolename="manager-gui"/>
+             <role rolename="manager-script"/>
+             <role rolename="manager-jmx"/>
+             <role rolename="manager-status"/>
+             <user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+             <user username="deployer" password="deployer" roles="manager-script"/>
+             <user username="tomcat" password="s3cret" roles="manager-gui"/>
+hostmanager_path: /opt/apache-tomcat-10.0.27/webapps/host-manager/META-INF/context.xml
+manager_path: /opt/apache-tomcat-10.0.27/webapps/manager/META-INF/context.xml
+adminrole_path: /opt/apache-tomcat-10.0.27/conf/tomcat-users.xml

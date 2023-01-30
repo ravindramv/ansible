@@ -1,0 +1,11 @@
+---
+- name: giving file permission
+  hosts: all
+  tasks:
+
+    - name: permissions
+      file:
+        path: 1stplaybook.yaml
+        mode: 0666
+        group: root
+        owner: root

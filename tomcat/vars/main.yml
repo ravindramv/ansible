@@ -1,0 +1,3 @@
+---
+# vars file for tomcat
+tom_port_number: "9090"

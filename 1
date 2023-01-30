@@ -1,0 +1,30 @@
+---
+- name: getting to know copy and template module
+  hosts: all
+  vars: 
+    nam: ravindra
+    state: karnataka 
+  tasks: 
+    - name: copying files from source to destination
+      copy:
+        src: test.yaml
+        dest: /root/
+      become: yes
+
+    - name: template module
+      template:
+        src: variable.j2
+        dest: /root/testing.txt
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+      become: true
+
+    - name: another template module
+      template:
+        src: helloworld.j2
+        dest: /root/
+        vars:
+          variable_to_be_replaced: ravindra working
+            inline_
+
+      

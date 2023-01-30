@@ -1,0 +1,5 @@
+---
+- name: installing java
+  hosts: all
+  roles:
+    - jenkins

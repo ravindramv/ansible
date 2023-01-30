@@ -1,0 +1,9 @@
+---
+- name: installing tomcat server role
+  hosts: all
+  roles: 
+    - tomcat
+  become: true
+
+
+  
